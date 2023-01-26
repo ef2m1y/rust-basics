@@ -1,13 +1,13 @@
 fn main() {
-    let t1: (i32, bool, f64) = (1, false, 5.0);
-    let t2: (bool, f64, i32) = (false, 5.0, 1);
-    // debug format
-    println!("{:?}", t1);
+    let arr1: [i32; 3] = [1, 2, 3];
+    let arr2: [i32; 1000] = [0; 1000];
+    println!("{:?}", arr1);
 
-    println!("{}", t1.0);
-
-    let (x, y, z) = t2;
+    println!("{}", arr1[0]);
+    
+    let [x, y, z] = arr1;
     println!("{x}");
 
-    let u: () = ();
+    let arr3: &[i32] = &arr1[..=1];
+    println!("{:?}", arr3);
 }
