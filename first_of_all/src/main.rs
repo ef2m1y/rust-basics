@@ -1,24 +1,21 @@
+use std::fmt::format;
+
 fn main() {
-    let v1: Vec<i32> = vec![10, 20, 30];
-    let v2: Vec<i32> = vec![1; 100];
+    let c1: char = 'a';
+    let c2: char = '@';
+    let c3: char = '😊';
 
-    let mut v3 = Vec::new();
-    v3.push(1);
-    v3.push(2);
-    v3.push(3);
-    println!("{:?}", v3);
+    let s1: &str = "Rust";
 
-    let z: Option<i32> = v3.pop();
-    println!("{:?}", z);
-    println!("{:?}", v3);
+    let s2: String = String::from("Python");
+    let s3: String = "Go".to_string();
 
-    let x: i32 = v3[0];
-    let y: Option<&i32> = v3.get(1);
-    println!("{}", x);
-    println!("{:?}", y); // Some(2)
+    let mut s4: String = String::from("Hello");
+    s4.push_str(", Rust!");
+    println!("{}", s4);
 
-    let n: Option<&i32> = v3.get(1000);
-    println!("{:?}", n); // None
+    // String + &str の順番でないとcompile error
+    println!("{}", s4 + "Zig!");
 
-    let s: &[i32] = &v3[..];
+    let s5: String = format!("{}{}", s1, s2);
 }
