@@ -1,12 +1,13 @@
 fn main() {
-    // default type
-    let a: i32 = 1;
-    let b: f64 = 1.0;
+    let t1: (i32, bool, f64) = (1, false, 5.0);
+    let t2: (bool, f64, i32) = (false, 5.0, 1);
+    // debug format
+    println!("{:?}", t1);
 
-    let c = 3.0f32;
-    let d = 2 as f64 % b;
+    println!("{}", t1.0);
 
-    let e: bool = true;
-    let g: bool = 1 < 4;
-    let h: bool = 1 != 2;
+    let (x, y, z) = t2;
+    println!("{x}");
+
+    let u: () = ();
 }
