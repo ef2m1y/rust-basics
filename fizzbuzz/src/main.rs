@@ -26,9 +26,20 @@ fn fizzbuzz_for_match(n: u32) {
     }
 }
 
-fn fizzbuzz_for_match_tuple(n: u32) {}
+fn fizzbuzz_for_match_tuple(n: u32) {
+    for i in 1..=n {
+        match (i % 3, i % 5) {
+            (0, 0) => println!("fizzbuzz"),
+            (0, _) => println!("fizz"),
+            (_, 0) => println!("buzz"),
+            _ => println!("{i}"),
+            // m => println!("{m}"),
+        }
+    }
+}
 
 fn main() {
     // fizzbuzz_while_if(100);
-    fizzbuzz_for_match(100);
+    // fizzbuzz_for_match(100);
+    fizzbuzz_for_match_tuple(100);
 }
