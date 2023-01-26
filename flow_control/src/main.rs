@@ -1,20 +1,25 @@
 fn main() {
-    let x = 0;
-    // すべての場合を網羅する
-    match x {
-        0 => println!("Zero..."),
-        1 => {
-            println!("One!");
-            println!("One!");
+    let mut cnt = 0;
+    loop {
+        println!("Hello");
+        if cnt == 10 {
+            break;
         }
-        _ => println!("Other!!!"),
+        cnt += 1;
     }
 
-    // 1. すべての場合を網羅する
-    // 2. 各場合の返り値の型は同じ
-    let y = match x {
-        0 => 0,
-        1 => 10,
-        _ => 11111,
-    };
+    let mut cnt = 0;
+    while cnt <= 10 {
+        println!("Hello");
+        cnt += 1;
+    }
+
+    for i in [1, 2, 3] {
+        println!("Hello, {i}");
+    }
+
+    let range = 1..=10;
+    for x in range {
+        println!("{}", x * x);
+    }
 }
