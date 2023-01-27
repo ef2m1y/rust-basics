@@ -3,6 +3,14 @@ struct Rect {
     height: u32,
 }
 
+impl Rect {
+    // self: instance自身を指す -> selfの型は構造体と同じ -> 省略可
+    // メソッドでもmoveが起きる -> 共有参照とする
+    fn area(&self) -> u32 {
+        self.height * self.width
+    }
+}
+
 fn main() {
     let height = 5;
     let mut rect = Rect {
@@ -14,4 +22,6 @@ fn main() {
 
     rect.height = 10;
     println!("height: {}", rect.height);
+
+    println!("area: {}", rect.area());
 }
