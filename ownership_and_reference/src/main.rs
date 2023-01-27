@@ -1,13 +1,14 @@
 fn main() {
-    let s1 = String::from("Hello");
-    let s2 = String::from("Rust");
-    let s = concat(&s1, &s2);
-    println!("{s}");
-    println!("{s1}");
-    println!("{s2}");
+    let r: &i32;
+    {
+        let x: i32 = 1;
+        r = &x;
+        println!("{r}");
+    }
+    // println!("{r}");
 }
 
-fn concat(a: &String, b: &String) -> String {
-    let c = format!("{a}, {b}");
-    c
-}
+// lifetime: 参照が有効であるスコープ(多くの場合推論される)
+// -> ダングリングポインタを防ぐ目的で使用される
+// 
+// lifetimeはその参照元の生存期間に包含されている必要がある
