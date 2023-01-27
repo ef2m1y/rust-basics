@@ -1,5 +1,3 @@
-use std::fmt::format;
-
 fn main() {
     let mut v1 = vec![1, 2, 3];
     // (fat ptrに含まれる)v1へのptrはv1の0番目の要素のアドレスを指している
@@ -38,7 +36,7 @@ fn main() {
 }
 
 fn concat(a: String, b: String) -> (String, String, String) {
-    let c = format!("{}, {}", a, b);
+    let c = format!("{a}, {b}");
     (c, a, b)
 }
 
