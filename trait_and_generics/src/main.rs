@@ -17,4 +17,7 @@ fn main() {
     println!("Circle area is: {}", circle.calc_area());
     println!("Circle parimeter is: {}", circle.calc_perimeter());
     Circle::do_something();
+
+    println!("Rectangle default: {}", rect.default_something());
+    println!("Circle default: {}", circle.default_something());
 }
