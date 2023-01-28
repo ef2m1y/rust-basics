@@ -1,6 +1,7 @@
 mod test_module;
 
-use test_module::sub_module1;
+// use test_module::{sub_module1, sub_module2};
+use test_module::*;
 
 fn main() {
     crate::test_module::sub_module1::test_fn1(); // 絶対パス
@@ -8,4 +9,5 @@ fn main() {
     test_module::sub_module2::test_fn1();
 
     sub_module1::test_fn1();
+    sub_module2::test_fn1();
 }
