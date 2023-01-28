@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["bin1","bin2","crate_and_module"];

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["hidden_if_private","doc of hidden_if_private"],["say_hello","doc to subsequent elements"]]};
