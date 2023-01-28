@@ -13,4 +13,7 @@ fn main() {
 
     let s = sub_module1::TestStruct { val1: 10, val2: 20 };
     let t = sub_module1::TestStruct::new(17, 19);
+
+    println!("This is crate_and_module!");
+    crate_and_module::say_hello();
 }
