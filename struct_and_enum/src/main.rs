@@ -16,8 +16,20 @@ impl Rect {
     }
 }
 
+enum Shape {
+    Circle,
+    Square(u32),
+    Triangle { base: u32, height: u32 },
+}
+
+impl Shape {
+    fn samp_method(&self) {
+        println!("call samp_method!");
+    }
+}
+
 fn main() {
-    let height = 5;
+    // let height = 5;
     // let mut rect = Rect {
     //     width: 10,
     //     height,
@@ -31,6 +43,14 @@ fn main() {
     println!("height: {}", rect.height);
 
     println!("area: {}", rect.area());
+
+    let c = Shape::Circle;
+    let s = Shape::Square(1);
+    let t = Shape::Triangle { base: 10, height: 5 };
+
+    c.samp_method();
+    s.samp_method();
+    t.samp_method();
 }
 
 // instance名.method名()
