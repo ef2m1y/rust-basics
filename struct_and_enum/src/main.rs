@@ -28,6 +28,11 @@ impl Shape {
     }
 }
 
+// enum Option<T> {
+//     None,
+//     Some(T),
+// }
+
 fn main() {
     // let height = 5;
     // let mut rect = Rect {
@@ -51,6 +56,23 @@ fn main() {
     c.samp_method();
     s.samp_method();
     t.samp_method();
+
+    // Option型は非常によく使われる列挙型なので
+    // Option::を省略してSome(1)のみで使用出来る
+    let a: Option<i32> = Some(1);
+    let b: Option<&str> = Some("str");
+    // Noneはデータを持たず型推論の為の情報がないので型指定する必要がある
+    let c: Option<i32> = None;
+
+    let v: Vec<i32> = vec![1, 2, 3];
+    let val: Option<&i32> = v.get(2);
+    match val {
+        Some(n) => println!("{n}!"),
+        None => println!("None!"),
+    }
+    if let Some(n) = val {
+        println!("{n}!!");
+    }
 }
 
 // instance名.method名()
