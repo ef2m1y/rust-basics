@@ -17,3 +17,6 @@ fn main() {
     println!("This is crate_and_module!");
     crate_and_module::say_hello();
 }
+
+// cargo run --bin crate_and_module
+// cargo run --bin crate_and_module --release
