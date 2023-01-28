@@ -10,4 +10,7 @@ fn main() {
 
     sub_module1::test_fn1();
     sub_module2::test_fn1();
+
+    let s = sub_module1::TestStruct { val1: 10, val2: 20 };
+    let t = sub_module1::TestStruct::new(17, 19);
 }
