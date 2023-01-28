@@ -48,6 +48,12 @@ pub mod sample_trait {
             println!("This is Circle function!");
         }
     }
+
+    // cf. Polymorphism
+    // shape: Shapeトレイトを実装した任意の型の共有参照を受け付ける
+    pub fn double_area(shape: &impl Shape) -> f64 {
+        shape.calc_area() * 2.0
+    }
 }
 
 // trait: 

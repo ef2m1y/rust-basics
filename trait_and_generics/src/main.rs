@@ -1,4 +1,4 @@
-use trait_and_generics::sample_trait::{Shape, Rectangle, Circle};
+use trait_and_generics::sample_trait::{Shape, Rectangle, Circle, double_area};
 // 型をimportしただけでは型に実装されたトレイトのメソッドは使用不可能
 // -> Shapeトレイトもimportする
 
@@ -20,4 +20,7 @@ fn main() {
 
     println!("Rectangle default: {}", rect.default_something());
     println!("Circle default: {}", circle.default_something());
+
+    println!("Rectangle double area: {}", double_area(&rect));
+    println!("Circle double area: {}", double_area(&circle));
 }
