@@ -9,7 +9,7 @@ impl Rect {
     fn area(&self) -> u32 {
         self.height * self.width
     }
-    // 型関連関数(&selfなし), コンストラクタ, Self(of Rect)
+    // 型関連関数(&selfなし), コンストラクタ, Self(or Rect)
     fn new(width: u32, height: u32) -> Self {
         // 省略形
         Rect { width, height }
@@ -65,9 +65,12 @@ fn main() {
     let c: Option<i32> = None;
 
     let v: Vec<i32> = vec![1, 2, 3];
-    let val: Option<&i32> = v.get(2);
+    let val: Option<&i32> = v.get(0);
     match val {
-        Some(n) => println!("{n}!"),
+        // Some(1) => println!("just 1!"),
+        // Some(2 | 3) => println!("2 or 3!"),
+        Some(n) if *n == 1 => println!("value is 1!"), // match guard
+        Some(n) => println!("{}!", n),
         None => println!("None!"),
     }
     if let Some(n) = val {
