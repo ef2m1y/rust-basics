@@ -67,8 +67,8 @@ fn main() {
     // println!("{:?}", c.next());
     // println!("{:?}", c.next());
 
-    let v = vec![1, 2, 3, 4, 5];
-    let mut m = v.iter().map(|x: &i32| x * 2);
+    // let v = vec![1, 2, 3, 4, 5];
+    // let mut m = v.iter().map(|x: &i32| x * 2);
     // for val in m {
     //     println!("{val}");
     // }
@@ -85,8 +85,24 @@ fn main() {
     // let c: Vec<_> = v.iter().map(|x| x * 2).collect();
     // println!("{:?}", c);
 
-    let f: Vec<_> = v.iter().filter(|x| *x % 2 != 0).collect();
-    println!("{:?}", f);
+    // let f: Vec<_> = v.iter().filter(|x| *x % 2 != 0).collect();
+    // println!("{:?}", f);
+
+    // map / filter -> for / next / collectを実行するまでiterが消費されないmethod
+    // 以降 -> methodが内部的にnextを呼び出し最終結果のみを返す(iterを消費する)method
+    let v = vec![1, 2, 3, 4, 5];
+    let c = v.iter().count();
+    println!("{}", c);
+    let s: i32 = v.iter().sum();
+    let p: i32 = v.iter().product();
+    println!("{}", s);
+    println!("{}", p);
+    let max = v.iter().max();
+    let min = v.iter().min();
+    println!("{:?}", max);
+    println!("{:?}", min);
+    let s2 = v.iter().fold(0, |sum, x| sum + x);
+    println!("{:?}", s2);
 }
 
 // 全てのiteratorは次のようなiterator traitを実装している
