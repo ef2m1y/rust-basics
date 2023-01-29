@@ -1,3 +1,5 @@
+use std::collections::{VecDeque, BinaryHeap};
+
 fn main() {
     // let v1 = vec!["Rust", "Python", "Java"];
     // println!("{:?}", v1);
@@ -22,42 +24,64 @@ fn main() {
     // v4.remove(2);
     // println!("{:?}", v4);
 
-    let v1 = vec!["Rust", "Python", "Java"];
-    let v2 = vec!["PHP", "Go"];
-    let v3 = [v1, v2].concat();
-    println!("{:?}", v3);
+    // let v1 = vec!["Rust", "Python", "Java"];
+    // let v2 = vec!["PHP", "Go"];
+    // let v3 = [v1, v2].concat();
+    // println!("{:?}", v3);
 
-    let (v4, v5) = v3.split_at(2);
-    println!("{:?}", v4);
-    println!("{:?}", v5);
+    // let (v4, v5) = v3.split_at(2);
+    // println!("{:?}", v4);
+    // println!("{:?}", v5);
 
-    let mut v6 = vec![3, 6, 1, 7, 2];
-    v6.sort();
-    println!("{:?}", v6);
-    v6.reverse();
-    println!("{:?}", v6);
+    // let mut v6 = vec![3, 6, 1, 7, 2];
+    // v6.sort();
+    // println!("{:?}", v6);
+    // v6.reverse();
+    // println!("{:?}", v6);
 
-    // sort keyを指定する方法(もしくはOrd traitの実装でも良い)
-    #[derive(Debug)]
-    struct S {
-        val1: i32,
-        val2: i32,
-    }
-    let mut v7 = vec![
-        S { val1: 3, val2: 1 },
-        S { val1: 2, val2: 2 },
-        S { val1: 1, val2: 3 },
-    ];
-    // sはv7の各要素
-    v7.sort_by_key(|s| s.val1);
-    println!("{:?}", v7);
+    // // sort keyを指定する方法(もしくはOrd traitの実装でも良い)
+    // #[derive(Debug)]
+    // struct S {
+    //     val1: i32,
+    //     val2: i32,
+    // }
+    // let mut v7 = vec![
+    //     S { val1: 3, val2: 1 },
+    //     S { val1: 2, val2: 2 },
+    //     S { val1: 1, val2: 3 },
+    // ];
+    // // sはv7の各要素
+    // v7.sort_by_key(|s| s.val1);
+    // println!("{:?}", v7);
 
-    let v8 = vec![3, 6, 1, 7, 2];
-    println!("{:?}", v8.contains(&6)); // true
-    println!("{:?}", v8.contains(&5)); // false
+    // let v8 = vec![3, 6, 1, 7, 2];
+    // println!("{:?}", v8.contains(&6)); // true
+    // println!("{:?}", v8.contains(&5)); // false
 
-    let x = v8.iter().position(|x| *x == 6);
-    println!("{:?}", x);
-    let y = v8.iter().position(|x| *x == 5);
-    println!("{:?}", y);
+    // let x = v8.iter().position(|x| *x == 6);
+    // println!("{:?}", x);
+    // let y = v8.iter().position(|x| *x == 5);
+    // println!("{:?}", y);
+
+    // 二重終端キュー
+    let mut q = VecDeque::new();
+    // let q = VecDeque::from(vec![1, 2, 3]);
+
+    q.push_back(1);
+    q.push_back(2);
+    q.push_back(3);
+    println!("{:?}", q);
+
+    println!("{:?}", q.pop_front());
+    println!("{:?}", q);
+
+    // 優先度付きキュー(ex. BinaryHeap)
+    let mut bh = BinaryHeap::new();
+    bh.push(1);
+    bh.push(10);
+    bh.push(20);
+    bh.push(2);
+    println!("{:?}", bh); // [20, 2, 10, 1]
+    println!("{:?}", bh.pop());
+    println!("{:?}", bh); // [10, 2, 1]
 }
