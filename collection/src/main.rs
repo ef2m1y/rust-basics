@@ -1,4 +1,4 @@
-use std::collections::{BinaryHeap, HashMap, VecDeque};
+use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 
 fn main() {
     // let v1 = vec!["Rust", "Python", "Java"];
@@ -85,21 +85,50 @@ fn main() {
     // println!("{:?}", bh.pop());
     // println!("{:?}", bh); // [10, 2, 1]
 
-    let mut map = HashMap::new();
-    map.insert("Japan", 11);
-    map.insert("USA", 3);
-    map.insert("China", 1);
-    map.insert("India", 2);
-    println!("{:?}", map);
+    // let mut map = HashMap::new();
+    // map.insert("Japan", 11);
+    // map.insert("USA", 3);
+    // map.insert("China", 1);
+    // map.insert("India", 2);
+    // println!("{:?}", map);
 
-    map.insert("Japan", 10); // overwrite
-    println!("{:?}", map);
-    
-    println!("{:?}", map.get("USA"));
-    println!("{:?}", map.remove("India"));
-    println!("{:?}", map);
-    
-    for (k, v) in &map {
-        println!("{:?}: {:?}", k, v);
-    }
+    // map.insert("Japan", 10); // overwrite
+    // println!("{:?}", map);
+
+    // println!("{:?}", map.get("USA"));
+    // println!("{:?}", map.remove("India"));
+    // println!("{:?}", map);
+
+    // for (k, v) in &map {
+    //     println!("{:?}: {:?}", k, v);
+    // }
+
+    let mut set1 = HashSet::new();
+    set1.insert(1);
+    set1.insert(1);
+    set1.insert(1);
+    println!("{:?}", set1);
+    set1.insert(2);
+    set1.insert(3);
+    set1.insert(4);
+    println!("{:?}", set1);
+    println!("{:?}", set1.contains(&2));
+    println!("{:?}", set1.remove(&2));
+    println!("set1: {:?}", set1);
+
+    let mut set2 = HashSet::new();
+    set2.insert(1);
+    set2.insert(2);
+    set2.insert(3);
+    set2.insert(5);
+    println!("set2: {:?}", set2);
+
+    let set3 = &set1 | &set2;
+    println!("set3: {:?}", set3);
+    let set4 = &set1 & &set2;
+    println!("set4: {:?}", set4);
+    let set5 = &set1 - &set2;
+    println!("set5: {:?}", set5);
+    let set6 = &set1 ^ &set2;
+    println!("set6: {:?}", set6);
 }
