@@ -72,12 +72,18 @@ fn main() {
     // for val in m {
     //     println!("{val}");
     // }
-    println!("{:?}", m.next());
-    println!("{:?}", m.next());
-    println!("{:?}", m.next());
-    println!("{:?}", m.next());
-    println!("{:?}", m.next());
-    println!("{:?}", m.next());
+    // println!("{:?}", m.next());
+    // println!("{:?}", m.next());
+    // println!("{:?}", m.next());
+    // println!("{:?}", m.next());
+    // println!("{:?}", m.next());
+    // println!("{:?}", m.next());
+
+    // mapにcollectを続けることで一気にiterを消費し, collentionに変換可能
+    // -> どのcollenctionに変換するのか? -> 明示的な型指定が必要
+    // -> 但しどのcollentionかさえ指定(Vec<>)すれば中身の型(_)はコンパイラが推論
+    let c: Vec<_> = v.iter().map(|x| x * 2).collect();
+    println!("{:?}", c);
 }
 
 // 全てのiteratorは次のようなiterator traitを実装している
