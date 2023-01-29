@@ -28,7 +28,15 @@ fn main() {
     // println!("{}", s.unwrap());
     // println!("{}", s.expect("expect method!"));
 
-    println!("{:?}", double_even(2));
+    // println!("{:?}", double_even(2));
+
+    match double_even(1) {
+        Ok(val) => println!("{val}"),
+        Err(err) => {
+            println!("Handling in main func!");
+            println!("{err}");
+        }
+    }
 }
 
 fn double_even(b: i32) -> Result<i32, String> {
