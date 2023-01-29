@@ -36,4 +36,28 @@ fn main() {
     println!("{:?}", v6);
     v6.reverse();
     println!("{:?}", v6);
+
+    // sort keyを指定する方法(もしくはOrd traitの実装でも良い)
+    #[derive(Debug)]
+    struct S {
+        val1: i32,
+        val2: i32,
+    }
+    let mut v7 = vec![
+        S { val1: 3, val2: 1 },
+        S { val1: 2, val2: 2 },
+        S { val1: 1, val2: 3 },
+    ];
+    // sはv7の各要素
+    v7.sort_by_key(|s| s.val1);
+    println!("{:?}", v7);
+
+    let v8 = vec![3, 6, 1, 7, 2];
+    println!("{:?}", v8.contains(&6)); // true
+    println!("{:?}", v8.contains(&5)); // false
+
+    let x = v8.iter().position(|x| *x == 6);
+    println!("{:?}", x);
+    let y = v8.iter().position(|x| *x == 5);
+    println!("{:?}", y);
 }
