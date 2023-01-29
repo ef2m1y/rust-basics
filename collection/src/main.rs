@@ -1,4 +1,4 @@
-use std::collections::{VecDeque, BinaryHeap};
+use std::collections::{BinaryHeap, HashMap, VecDeque};
 
 fn main() {
     // let v1 = vec!["Rust", "Python", "Java"];
@@ -63,25 +63,43 @@ fn main() {
     // let y = v8.iter().position(|x| *x == 5);
     // println!("{:?}", y);
 
-    // 二重終端キュー
-    let mut q = VecDeque::new();
-    // let q = VecDeque::from(vec![1, 2, 3]);
+    // // 二重終端キュー
+    // let mut q = VecDeque::new();
+    // // let q = VecDeque::from(vec![1, 2, 3]);
 
-    q.push_back(1);
-    q.push_back(2);
-    q.push_back(3);
-    println!("{:?}", q);
+    // q.push_back(1);
+    // q.push_back(2);
+    // q.push_back(3);
+    // println!("{:?}", q);
 
-    println!("{:?}", q.pop_front());
-    println!("{:?}", q);
+    // println!("{:?}", q.pop_front());
+    // println!("{:?}", q);
 
-    // 優先度付きキュー(ex. BinaryHeap)
-    let mut bh = BinaryHeap::new();
-    bh.push(1);
-    bh.push(10);
-    bh.push(20);
-    bh.push(2);
-    println!("{:?}", bh); // [20, 2, 10, 1]
-    println!("{:?}", bh.pop());
-    println!("{:?}", bh); // [10, 2, 1]
+    // // 優先度付きキュー(ex. BinaryHeap)
+    // let mut bh = BinaryHeap::new();
+    // bh.push(1);
+    // bh.push(10);
+    // bh.push(20);
+    // bh.push(2);
+    // println!("{:?}", bh); // [20, 2, 10, 1]
+    // println!("{:?}", bh.pop());
+    // println!("{:?}", bh); // [10, 2, 1]
+
+    let mut map = HashMap::new();
+    map.insert("Japan", 11);
+    map.insert("USA", 3);
+    map.insert("China", 1);
+    map.insert("India", 2);
+    println!("{:?}", map);
+
+    map.insert("Japan", 10); // overwrite
+    println!("{:?}", map);
+    
+    println!("{:?}", map.get("USA"));
+    println!("{:?}", map.remove("India"));
+    println!("{:?}", map);
+    
+    for (k, v) in &map {
+        println!("{:?}: {:?}", k, v);
+    }
 }
