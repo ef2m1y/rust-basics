@@ -51,11 +51,26 @@ fn main() {
     // let mut v = vec![1, 2, 3, 4, 5];
     // let mut v2_iter = v.iter_mut();
     // // [v.iter_mut() -> vの可変参照へのiterator] -> nextで得られる値は可変参照
+
+    let mut c = Counter {
+        start: 1,
+        end: 5,
+    };
+    // Counter型にはiterトレイトを実装したので次が出来る
+    // (全て消費されてしまうのでコメントアウト)
+    // for i in c {
+    //     println!("{}", i);
+    // }
+    println!("{:?}", c.next());
+    println!("{:?}", c.next());
+    println!("{:?}", c.next());
+    println!("{:?}", c.next());
+    println!("{:?}", c.next());
 }
 
 // 全てのiteratorは次のようなiterator traitを実装している
 // pub trait Iterator {
-//     type Item; // 関連型: iteratorが扱う型を表す
+//     type Item; // 関連型: iteratorが扱う型を表す!!!
 
 //     fn next(&mut self) -> Option<Self::Item>;
 
@@ -63,3 +78,22 @@ fn main() {
 //     // default method
 //     // ...
 // }
+
+struct Counter {
+    start: u32,
+    end: u32,
+}
+
+impl Iterator for Counter {
+    type Item = u32; // u32型を扱う
+
+    fn next(&mut self) -> Option<u32> {
+        if self.start >= self.end {
+            None
+        } else {
+            let result = Some(self.start);
+            self.start += 1;
+            result
+        }
+    }
+}
