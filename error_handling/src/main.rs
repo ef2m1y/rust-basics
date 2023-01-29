@@ -28,14 +28,20 @@ fn main() {
     // println!("{}", s.unwrap());
     // println!("{}", s.expect("expect method!"));
 
-    println!("{:?}", double_even(1));
+    println!("{:?}", double_even(2));
 }
 
 fn double_even(b: i32) -> Result<i32, String> {
-    match need_even(b) {
-        Ok(val) => Ok(val * 2),
-        Err(err) => Err(err),
-    }
+    // match need_even(b) {
+    //     Ok(val) => Ok(val * 2),
+    //     Err(err) => Err(err),
+    // }
+    
+    // [?構文]
+    // - need_even(b)がOk(val) -> need_even(b)?の評価値はval -> xに格納
+    // - need_even(b)がErr(err) -> 即時に, double_even(b)の評価値としてErr(err)が返される
+    let x = need_even(b)?;
+    Ok(x * 2)
 }
 
 fn need_even(a: i32) -> Result<i32, String> {
