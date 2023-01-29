@@ -15,9 +15,9 @@ fn main() {
     // };
     // println!("{x}");
 
-    let s = need_even(1);
-    println!("{}", s.is_ok());
-    println!("{}", s.is_err());
+    // let s = need_even(1);
+    // println!("{}", s.is_ok());
+    // println!("{}", s.is_err());
     
     // moveが起きるのでコメントアウト
     // println!("{:?}", s.ok());
@@ -26,7 +26,16 @@ fn main() {
     // println!("{}", s.unwrap_or(100));
 
     // println!("{}", s.unwrap());
-    println!("{}", s.expect("expect method!"));
+    // println!("{}", s.expect("expect method!"));
+
+    println!("{:?}", double_even(1));
+}
+
+fn double_even(b: i32) -> Result<i32, String> {
+    match need_even(b) {
+        Ok(val) => Ok(val * 2),
+        Err(err) => Err(err),
+    }
 }
 
 fn need_even(a: i32) -> Result<i32, String> {
