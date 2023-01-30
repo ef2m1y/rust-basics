@@ -61,14 +61,19 @@ fn main() {
     // .create_new(true) // 元々ファイルがあったならerrを吐く
     // .open("src/sample2.txt").unwrap();
 
-    let p = Person {
-        name: String::from("Json Taro"),
-        age: 55,
-        phones: vec![String::from("080-XXXX-XXXX"), String::from("090-XXXX-XXXX")],
-    };
-    let json_data = serde_json::to_string_pretty(&p).unwrap();
-    let mut f = File::create("src/sample.json").unwrap();
-    writeln!(f, "{}", json_data).unwrap();
+    // let p = Person {
+    //     name: String::from("Json Taro"),
+    //     age: 55,
+    //     phones: vec![String::from("080-XXXX-XXXX"), String::from("090-XXXX-XXXX")],
+    // };
+    // let json_data = serde_json::to_string_pretty(&p).unwrap();
+    // let mut f = File::create("src/sample.json").unwrap();
+    // writeln!(f, "{}", json_data).unwrap();
+
+    let f = File::open("src/sample.json").unwrap();
+    let buf_reader = BufReader::new(f);
+    let data: Person = serde_json::from_reader(buf_reader).unwrap();
+    println!("{:?}", data);
 }
 
 // featuresフラグにderiveを指定しない場合は次の記述が出来ず
