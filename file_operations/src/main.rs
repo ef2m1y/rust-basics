@@ -23,9 +23,14 @@ fn main() {
     // println!("{}", contents);
 
     let mut buf_reader = BufReader::new(f);
-    let mut line = String::new();
-    buf_reader.read_line(&mut line).unwrap();
-    println!("{}", line);
-    buf_reader.read_line(&mut line).unwrap();
-    println!("{}", line);
+    // let mut line = String::new();
+    // buf_reader.read_line(&mut line).unwrap();
+    // println!("{}", line);
+    // buf_reader.read_line(&mut line).unwrap();
+    // println!("{}", line);
+
+    let lines = buf_reader.lines();
+    for l in lines {
+        println!("{}", l.unwrap());
+    }
 }
