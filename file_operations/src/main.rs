@@ -95,6 +95,9 @@ fn main() {
     // println!("{:?}", path_buf);
     // path_buf.pop();
     // println!("{:?}", path_buf);
+
+    fs::create_dir("src/test1").unwrap();
+    fs::create_dir_all("src/test2/test2-1/test2-1-1").unwrap();
 }
 
 // // featuresフラグにderiveを指定しない場合は次の記述が出来ず
