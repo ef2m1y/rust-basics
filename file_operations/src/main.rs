@@ -5,6 +5,7 @@ use std::{
     io,
     io::prelude::*,
     io::BufReader,
+    os::unix::prelude::PermissionsExt,
     path::{Path, PathBuf},
 };
 
@@ -102,8 +103,14 @@ fn main() {
     // fs::remove_dir_all("src/test2").unwrap();
     // fs::remove_file("src/sample1.txt").unwrap();
     // fs::copy("src/sample2.txt", "src/sample3.txt").unwrap();
-    fs::create_dir("src/test1").unwrap();
-    fs::rename("src/sample3.txt", "src/test1/sample3.txt").unwrap();
+    // fs::create_dir("src/test1").unwrap();
+    // fs::rename("src/sample3.txt", "src/test1/sample3.txt").unwrap();
+
+    // $ ls -l src/sample2.txt -> 0o644 (before)
+    let mut permissions = fs::metadata("src/sample2.txt").unwrap().permissions();
+    permissions.set_mode(0o600);
+    fs::set_permissions("src/sample2.txt", permissions).unwrap();
+    // $ ls -l src/sample2.txt -> 0o600 (after)
 }
 
 // // featuresフラグにderiveを指定しない場合は次の記述が出来ず
