@@ -1,4 +1,6 @@
 use std::{env, fs, fs::File, fs::OpenOptions, io, io::prelude::*, io::BufReader};
+
+use serde::{Deserialize, Serialize};
 fn main() {
     // let args: Vec<String> = env::args().collect();
     // println!("{:?}", args);
@@ -49,13 +51,31 @@ fn main() {
     // writeln!(f2, "Hello, {}!", "Rust").unwrap();
     // // $ cat src/sample3.txt -> Hello, Rust!
 
-    let f1 = OpenOptions::new()
-    .append(true) // 上書きでなく続けて書く
-    .open("src/sapmle1.txt").unwrap();
+    // let f1 = OpenOptions::new()
+    // .append(true) // 上書きでなく続けて書く
+    // .open("src/sapmle1.txt").unwrap();
 
-    // 元々その名前のファイルがなかった場合にのみ生成する
-    let f2 = OpenOptions::new()
-    .write(true) // 上書き
-    .create_new(true) // 元々ファイルがあったならerrを吐く
-    .open("src/sample2.txt").unwrap();
+    // // 元々その名前のファイルがなかった場合にのみ生成する
+    // let f2 = OpenOptions::new()
+    // .write(true) // 上書き
+    // .create_new(true) // 元々ファイルがあったならerrを吐く
+    // .open("src/sample2.txt").unwrap();
+
+    let p = Person {
+        name: String::from("Json Taro"),
+        age: 55,
+        phones: vec![String::from("080-XXXX-XXXX"), String::from("090-XXXX-XXXX")],
+    };
+    let json_data = serde_json::to_string_pretty(&p).unwrap();
+    let mut f = File::create("src/sample.json").unwrap();
+    writeln!(f, "{}", json_data).unwrap();
+}
+
+// featuresフラグにderiveを指定しない場合は次の記述が出来ず
+// Serialize/DeserializeトレイトをPerson構造体に実装する必要が出てくる
+#[derive(Serialize, Deserialize, Debug)]
+struct Person {
+    name: String,
+    age: u8,
+    phones: Vec<String>,
 }
