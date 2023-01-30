@@ -15,10 +15,17 @@ fn main() {
     // println!("{:?}", num * 10);
 
     let mut f = File::open("src/sample1.txt").unwrap();
-    let mut contents = String::new();
-    f.read_to_string(&mut contents).unwrap();
-    println!("{}", contents);
+    // let mut contents = String::new();
+    // f.read_to_string(&mut contents).unwrap();
+    // println!("{}", contents);
 
-    let contests = fs::read_to_string("src/sample1.txt").unwrap();
-    println!("{}", contents);
+    // let contests = fs::read_to_string("src/sample1.txt").unwrap();
+    // println!("{}", contents);
+
+    let mut buf_reader = BufReader::new(f);
+    let mut line = String::new();
+    buf_reader.read_line(&mut line).unwrap();
+    println!("{}", line);
+    buf_reader.read_line(&mut line).unwrap();
+    println!("{}", line);
 }
