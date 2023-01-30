@@ -82,19 +82,19 @@ fn main() {
     // let data: Person = serde_json::from_reader(buf_reader).unwrap();
     // println!("{:?}", data);
 
-    let path = Path::new("src");
-    println!("{:?}", path.exists());
-    println!("{:?}", path.is_dir());
-    println!("{:?}", path.is_file());
-    println!("{:?}", path.file_name());
+    // let path = Path::new("src");
+    // println!("{:?}", path.exists());
+    // println!("{:?}", path.is_dir());
+    // println!("{:?}", path.is_file());
+    // println!("{:?}", path.file_name());
 
-    let mut path_buf = PathBuf::from("src");
-    path_buf.push("sample1.txt");
-    println!("{:?}", path_buf);
-    path_buf.set_file_name("path.txt");
-    println!("{:?}", path_buf);
-    path_buf.pop();
-    println!("{:?}", path_buf);
+    // let mut path_buf = PathBuf::from("src");
+    // path_buf.push("sample1.txt");
+    // println!("{:?}", path_buf);
+    // path_buf.set_file_name("path.txt");
+    // println!("{:?}", path_buf);
+    // path_buf.pop();
+    // println!("{:?}", path_buf);
 }
 
 // // featuresフラグにderiveを指定しない場合は次の記述が出来ず

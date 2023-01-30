@@ -1,5 +1,1 @@
-Rust
-Python
-Jaba
-C
-C++
+sapmle1
