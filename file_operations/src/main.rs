@@ -39,9 +39,13 @@ fn main() {
     // println!("{:?}", bytes);
     // println!("{:?}", String::from_utf8(bytes).unwrap());
 
-    let mut f1 = File::create("src/sample2.txt").unwrap();
-    let bytes = b"write examples!\n";
-    // println!("{:?}", bytes);
-    f1.write_all(bytes).unwrap();
-    // $ cat src/sample2.txt -> write examples!
+    // let mut f1 = File::create("src/sample2.txt").unwrap();
+    // let bytes = b"write examples!\n";
+    // // println!("{:?}", bytes);
+    // f1.write_all(bytes).unwrap();
+    // // $ cat src/sample2.txt -> write examples!
+
+    let mut f2 = File::create("src/sample3.txt").unwrap();
+    writeln!(f2, "Hello, {}!", "Rust").unwrap();
+    // $ cat src/sample3.txt -> Hello, Rust!
 }
