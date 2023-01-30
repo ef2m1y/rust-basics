@@ -1,4 +1,4 @@
-use std::{env, fs, fs::File, io, io::prelude::*, io::BufReader};
+use std::{env, fs, fs::File, fs::OpenOptions, io, io::prelude::*, io::BufReader};
 fn main() {
     // let args: Vec<String> = env::args().collect();
     // println!("{:?}", args);
@@ -45,7 +45,17 @@ fn main() {
     // f1.write_all(bytes).unwrap();
     // // $ cat src/sample2.txt -> write examples!
 
-    let mut f2 = File::create("src/sample3.txt").unwrap();
-    writeln!(f2, "Hello, {}!", "Rust").unwrap();
-    // $ cat src/sample3.txt -> Hello, Rust!
+    // let mut f2 = File::create("src/sample3.txt").unwrap();
+    // writeln!(f2, "Hello, {}!", "Rust").unwrap();
+    // // $ cat src/sample3.txt -> Hello, Rust!
+
+    let f1 = OpenOptions::new()
+    .append(true) // 上書きでなく続けて書く
+    .open("src/sapmle1.txt").unwrap();
+
+    // 元々その名前のファイルがなかった場合にのみ生成する
+    let f2 = OpenOptions::new()
+    .write(true) // 上書き
+    .create_new(true) // 元々ファイルがあったならerrを吐く
+    .open("src/sample2.txt").unwrap();
 }
