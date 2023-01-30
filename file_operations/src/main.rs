@@ -1,6 +1,13 @@
-use std::{env, fs, fs::File, fs::OpenOptions, io, io::prelude::*, io::BufReader};
-
 use serde::{Deserialize, Serialize};
+use std::{
+    env, fs,
+    fs::{File, OpenOptions},
+    io,
+    io::prelude::*,
+    io::BufReader,
+    path::{Path, PathBuf},
+};
+
 fn main() {
     // let args: Vec<String> = env::args().collect();
     // println!("{:?}", args);
@@ -70,17 +77,31 @@ fn main() {
     // let mut f = File::create("src/sample.json").unwrap();
     // writeln!(f, "{}", json_data).unwrap();
 
-    let f = File::open("src/sample.json").unwrap();
-    let buf_reader = BufReader::new(f);
-    let data: Person = serde_json::from_reader(buf_reader).unwrap();
-    println!("{:?}", data);
+    // let f = File::open("src/sample.json").unwrap();
+    // let buf_reader = BufReader::new(f);
+    // let data: Person = serde_json::from_reader(buf_reader).unwrap();
+    // println!("{:?}", data);
+
+    let path = Path::new("src");
+    println!("{:?}", path.exists());
+    println!("{:?}", path.is_dir());
+    println!("{:?}", path.is_file());
+    println!("{:?}", path.file_name());
+
+    let mut path_buf = PathBuf::from("src");
+    path_buf.push("sample1.txt");
+    println!("{:?}", path_buf);
+    path_buf.set_file_name("path.txt");
+    println!("{:?}", path_buf);
+    path_buf.pop();
+    println!("{:?}", path_buf);
 }
 
-// featuresフラグにderiveを指定しない場合は次の記述が出来ず
-// Serialize/DeserializeトレイトをPerson構造体に実装する必要が出てくる
-#[derive(Serialize, Deserialize, Debug)]
-struct Person {
-    name: String,
-    age: u8,
-    phones: Vec<String>,
-}
+// // featuresフラグにderiveを指定しない場合は次の記述が出来ず
+// // Serialize/DeserializeトレイトをPerson構造体に実装する必要が出てくる
+// #[derive(Serialize, Deserialize, Debug)]
+// struct Person {
+//     name: String,
+//     age: u8,
+//     phones: Vec<String>,
+// }
