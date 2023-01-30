@@ -14,7 +14,7 @@ fn main() {
     // let mut num: i32 = input.trim().parse().unwrap();
     // println!("{:?}", num * 10);
 
-    let mut f = File::open("src/sample1.txt").unwrap();
+    // let mut f = File::open("src/sample1.txt").unwrap();
     // let mut contents = String::new();
     // f.read_to_string(&mut contents).unwrap();
     // println!("{}", contents);
@@ -34,8 +34,14 @@ fn main() {
     //     println!("{}", l.unwrap());
     // }
 
-    let mut bytes = Vec::new();
-    f.read_to_end(&mut bytes).unwrap();
-    println!("{:?}", bytes);
-    println!("{:?}", String::from_utf8(bytes).unwrap());
+    // let mut bytes = Vec::new();
+    // f.read_to_end(&mut bytes).unwrap();
+    // println!("{:?}", bytes);
+    // println!("{:?}", String::from_utf8(bytes).unwrap());
+
+    let mut f1 = File::create("src/sample2.txt").unwrap();
+    let bytes = b"write examples!\n";
+    // println!("{:?}", bytes);
+    f1.write_all(bytes).unwrap();
+    // $ cat src/sample2.txt -> write examples!
 }
