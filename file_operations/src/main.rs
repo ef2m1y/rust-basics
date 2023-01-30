@@ -22,15 +22,20 @@ fn main() {
     // let contests = fs::read_to_string("src/sample1.txt").unwrap();
     // println!("{}", contents);
 
-    let mut buf_reader = BufReader::new(f);
+    // let mut buf_reader = BufReader::new(f);
     // let mut line = String::new();
     // buf_reader.read_line(&mut line).unwrap();
     // println!("{}", line);
     // buf_reader.read_line(&mut line).unwrap();
     // println!("{}", line);
 
-    let lines = buf_reader.lines();
-    for l in lines {
-        println!("{}", l.unwrap());
-    }
+    // let lines = buf_reader.lines();
+    // for l in lines {
+    //     println!("{}", l.unwrap());
+    // }
+
+    let mut bytes = Vec::new();
+    f.read_to_end(&mut bytes).unwrap();
+    println!("{:?}", bytes);
+    println!("{:?}", String::from_utf8(bytes).unwrap());
 }
