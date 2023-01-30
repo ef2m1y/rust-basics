@@ -96,8 +96,12 @@ fn main() {
     // path_buf.pop();
     // println!("{:?}", path_buf);
 
-    fs::create_dir("src/test1").unwrap();
-    fs::create_dir_all("src/test2/test2-1/test2-1-1").unwrap();
+    // fs::create_dir("src/test1").unwrap();
+    // fs::create_dir_all("src/test2/test2-1/test2-1-1").unwrap();
+    fs::remove_dir("src/test1").unwrap();
+    fs::remove_dir_all("src/test2").unwrap();
+    fs::remove_file("src/sample1.txt").unwrap();
+    fs::copy("src/sample2.txt", "src/sample3.txt").unwrap();
 }
 
 // // featuresフラグにderiveを指定しない場合は次の記述が出来ず
